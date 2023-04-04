@@ -1,0 +1,141 @@
+---
+title: "Git Instructions"
+author: "Michael Sciole"
+date: "2023-03-28"
+output:
+  bookdown::html_document2:
+    theme: lumen
+    toc: yes
+    toc_float: yes
+    df_print: kable
+    css: MyLab.css 
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Using Git
+
+### What is Git Branching and do I need it?
+
+  Group projects can be a pain, especially in software development. From sloppy code getting put into production to losing track of the last working version of your software, code monkeys like us need to be very careful. Git branching is the best way to keep your testing and production code separated and organized. Git is the most pervasive version control system in software development for two reasons, it is lightweight and cheap. Other version controls can be expensive and clog up your disk space. Git won't slow down your computer and it won't cost you or your team a dime. When making and debugging a new feature git branching is critical in keeping your production from breaking. By creating new branches Git allows you to keep unfinished code out of your product, making it easier to go back and find working versions of your code after finding a bug, and making it safer to add new features to your software or application.
+
+### Do I need to be a veteran coder?
+
+  Git is prided on how intuitive and user friendly it is. Most commands are about two or three words and only interact with your GitHub repository. By using branches it can even become more difficult to push bad code to your production branch than not. So no, you can be as novice to the world of software as you like!
+
+### What are all of these words?
+
+  There are a few terms you will want to familiarize yourself with. Two of the more important terms will be **repository** and **directory**. These terms are simply a collection of all the files in a project. Have you ever opened a folder on your computer? Then you have opened a directory. How about a shared folder? Then you have seen a repository! 
+  Another important term in Git is **Branch**. Branches allow team members to track their work independently, and help keep sloppy code off of the main product! (see fig 1.0)
+![image figure](./pictures/fig)
+
+## Let's Git Started!
+
+  Using git is as simple as typing “git init” into the directory you want to work in. This command initializes git commands in a [repository](#What-are-all-of-these-words?) giving you access to do all sorts of cool capabilities! 
+  
+### Setting up Git on Windows:
+
+Windows does not have the same capabilities as linux and will therefore require more work to set up. The following are alternative steps to enable git commands on a windows machine:
+
+1. **Go [download git here!](https://git-scm.com/download/win)** if you use Windows.
+
+2. Open powershell and navigate to where you want to set up your project.
+
+3. Run the following command: ```winget install --id Git.Git -e --source winget```.
+    + This will allow powershell to use git commands without hassle.
+    
+4. That's it, you can now use git!
+
+### Making a repository:
+
+Before we get started make sure your accessing your local drive through a terminal on your computer. If your using a Mac or a Linux machine this will be simple, just open the *terminal* application. **If your using a windows machine please refer to the previous section on how to set up your environment!**
+
+1. You will need to [**download the latest version of git**](https://git-scm.com) before you can *git* started!
+
+2. The first step in any project is to use the terminal to navigate to wherever you would like to store your project. ```cd user/project```
+    + *Note*: user should be your user name and project should be where you're storing you git project. To keep things simple make a dedicated directory on your local drive to store all of your git projects, or be prepared to do alot of searching!
+
+3. Once in the desired directory run the following command: ```git init```. 
+    + This will download the git dependencies into that directory
+
+4. Branch out! Run ```git branch main``` to create the main [branch](#What-are-all-of-these-words?)  you will store your production code in.
+
+5. Create some files! 
+    + *Note*: You should always create a ReadME.md file in the base of your Git repository so anyone looking at your project knows what your doing!
+    
+6. Stage your new files by running ```git add path/to/file``` to stage specific files, or ```git add --all``` to stage all modified files.
+    + *Note*: you can run ```git status``` to see what files have not been stage (which will be in red) and which ones have (in green).
+    
+7. Run the command ```git commit -m “initial commit”```. This will commit your work to be pushed to a repository your team can access.
+
+8. Get it on GitHub! Now is when we create the remote [repository](#What-are-all-of-these-words?) we will push our code. Go to GitHub.com and click “New Repository” in the top right corner of the page (see fig 1.1). 
+
+![image figure1](./pictures/fig1)
+
+9. Name your repository and set it to public, then click create repository. Copy the url on the next page (see fig 1.2). 
+
+![image figure2](./pictures/fig2)
+
+10. Now run the command ```git remote add origin <URL>``` on your terminal. Boom! Now your connected to GitHub! Time to push your work!
+
+11. Create a git token go to settings -> Developer settings -> personal access tokens -> tokens (see fig 1.3)
+
+![image figure3](./pictures/fig3)
+
+12. Click generate new token, and set the privileges so that you will have “repo access” (see fig 1.4).
+
+![image figure4](./pictures/fig4)
+
+13. Push it, Push it! Simply run the command ```git push -u origin main``` and enter your GitHub username and access token!
+
+There you have it! Your first repository! Now to make some [updates](#Updating-your-repository)!
+    
+### Updating your repository
+
+1. Run ```git branch branch-name``` to create a new branch to work on! (Name it whatever you like)
+    + *Note*: You *never* want to push code directly to your main branch. That branch is for your working production code, and you don't want to risk putting broken code onto it.
+    
+2. Run ```git checkout branch-name``` in order to get onto your new branch.
+
+3. Create some files, or update some of the ones commited in the previous section!
+
+4. Stage your changes by running ```git add path/to/file``` to stage specific files, or ```git add --all``` to stage all modified files.
+
+5. Run ```git commit -m "Add a message for your team here"```. Please remember to add comments to your commits. This helps your team keep track of what has been done!
+
+6. Run ```git push -u origin branch-name``` to add the updates to your GitHub.
+
+7. Go into GitHub and go to "Pull Requests" (see fig 1.5)
+
+![image figure5](./pictures/fig5)
+
+8. Someone on your team should review the request and then merge it into your main branch (see fig 1.6).
+
+![image figure6](./pictures/fig6)
+
+That’s that! You have successfully added an update to your project!
+
+
+### Cloning a repository:
+
+Sometimes you will need to clone a repository onto your local drive. Some find this method easier than creating a repository on your local drive, as there are fewer steps. **If using a windows machine please refer to the Windows setup section!** these commands will only work if git has been downloaded!
+
+1. Much like in step 9 in the Local Repository section you wil go to GitHub.com and click “New Repository” in the top right corner of the page (see fig 1.1). 
+
+2. Name your repository and set it to public, then click create repository. 
+
+3. Copy the url on the next page (see fig 1.2). Time to clone your work!
+
+4. Open your terminal and navigate to where you want to set up your project.
+    + For example you could go to users/git-projects
+
+5. Type the following command ```git clone **repository url**```
+    + Instead of typing **repository url**, however, you will paste the url you copied in step 3
+    
+6. Hit enter and then enter your credentials
+    + Remember your GitHub username is what you will use for the username prompt, but you will want to use and access token for the password prompt.
+    
+That's that! You should now have your repository on your local drive
+
