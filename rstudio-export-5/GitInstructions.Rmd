@@ -29,7 +29,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
   There are a few terms you will want to familiarize yourself with. Two of the more important terms will be **repository** and **directory**. These terms are simply a collection of all the files in a project. Have you ever opened a folder on your computer? Then you have opened a directory. How about a shared folder? Then you have seen a repository! 
   Another important term in Git is **Branch**. Branches allow team members to track their work independently, and help keep sloppy code off of the main product! (see fig 1.0)
-![image figure](./pictures/fig)
+![image figure](Git_Instructions/rstudio-export-5/pictures/fig.png)
 
 ## Let's Git Started!
 
